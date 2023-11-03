@@ -183,13 +183,18 @@ If (((CurrentVersion = "6.3") Or (CurrentVersion = "6.4")) And (PROCESSOR_ARCHIT
 			' delete OneDrive
 			If objFSO.FileExists(""& SystemRoot&"\SysWOW64\OneDriveSetup.exe") Then
 
-				' uninstall OneDrive
+				' uninstall OneDrive ( Windows 10 )
 				objShell.Run ""& SystemRoot&"\SysWOW64\OneDriveSetup.exe /uninstall", 2, true
 	
-				' disable OneDrive
-				objShell.RegWrite "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\OneDrive\DisableFileSyncNGSC","1","REG_DWORD"
+			else
+
+				' uninstall OneDrive ( Windows 11 )
+				objShell.Run ""& SystemRoot&"\System32\OneDriveSetup.exe /uninstall", 2, true
 
 			End if
+
+			' disable OneDrive
+			objShell.RegWrite "HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\OneDrive\DisableFileSyncNGSC","1","REG_DWORD"
 
 		Else
 
@@ -454,6 +459,9 @@ If (((CurrentVersion = "6.3") Or (CurrentVersion = "6.4")) And (PROCESSOR_ARCHIT
 	objShell.RegWrite "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.zip\","zip Archive","REG_SZ"
 	objShell.RegWrite "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.zip\DefaultIcon\","C:\Program Files\7-Zip\7z.dll,1","REG_SZ"
 	objShell.RegWrite "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.zip\shell\open\command\","""C:\Program Files\7-Zip\7zFM.exe"" ""%1"" ","REG_SZ"
+
+	' reboot
+	objShell.Run "shutdown /r /t 8 /f", 2, true
 
 End if
 

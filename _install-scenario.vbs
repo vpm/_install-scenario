@@ -113,12 +113,11 @@ If (((CurrentVersion = "6.3") Or (CurrentVersion = "6.4")) And (PROCESSOR_ARCHIT
 		objShell.Run "powershell Get-AppxPackage *Yandex* | Remove-AppxPackage", 2, true
 
 		' download ODT
-		objShell.Run "powershell Invoke-WebRequest -Uri https://install.vpm.net.ua/officedeploymenttool.txt -OutFile $env:TEMP\officedeploymenttool.txt", 2, true
-		objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\officedeploymenttool.txt) -OutFile $env:TEMP\officedeploymenttool.exe", 2, true
+		objShell.Run "powershell Invoke-WebRequest -Uri https://raw.githubusercontent.com/vpm/_install-scenario/main/officedeploymenttool.uri -OutFile $env:TEMP\officedeploymenttool.uri", 2, true
+		objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\officedeploymenttool.uri) -OutFile $env:TEMP\officedeploymenttool.exe", 2, true
 
 		' extract ODT
-		'objShell.Run ""& TEMP&"\officedeploymenttool.exe /extract:"& TEMP&" /quiet", 2, true
-		objShell.Run "powershell Start-Process -FilePath $env:TEMP\officedeploymenttool.exe -WorkingDirectory $env:TEMP\ -ArgumentList /extract:$env:TEMP\ /quiet -Wait", 2, true
+		objShell.Run ""& TEMP&"\officedeploymenttool.exe /extract:"& TEMP&" /quiet", 2, true
 
 		' create Standard2021Volume.xml
 		Set Standard2021Volume = objFSO.CreateTextFile(""& TEMP&"\Standard2021Volume.xml", True)
@@ -200,7 +199,7 @@ If (((CurrentVersion = "6.3") Or (CurrentVersion = "6.4")) And (PROCESSOR_ARCHIT
 		End if
 
 		' Delete ODT
-		objFSO.DeleteFile ""& TEMP&"\officedeploymenttool.txt"
+		objFSO.DeleteFile ""& TEMP&"\officedeploymenttool.uri"
 		objFSO.DeleteFile ""& TEMP&"\officedeploymenttool.exe"
 		objFSO.DeleteFile ""& TEMP&"\setup.exe"
 		objFSO.DeleteFile ""& TEMP&"\Standard2021Volume.xml"
@@ -211,33 +210,33 @@ If (((CurrentVersion = "6.3") Or (CurrentVersion = "6.4")) And (PROCESSOR_ARCHIT
 		objFSO.DeleteFile ""& TEMP&"\configuration-Office2021Enterprise.xml"
 
 		' Adobe Reader DC
-		objShell.Run "powershell Invoke-WebRequest -Uri https://install.vpm.net.ua/AcroRdrDCx64_uk_UA.txt -OutFile $env:TEMP\AcroRdrDCx64_uk_UA.txt", 2, true
-		objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\AcroRdrDCx64_uk_UA.txt) -OutFile $env:TEMP\AcroRdrDCx64_uk_UA.exe", 2, true
+		objShell.Run "powershell Invoke-WebRequest -Uri https://raw.githubusercontent.com/vpm/_install-scenario/main/AcroRdrDCx64_uk_UA.uri -OutFile $env:TEMP\AcroRdrDCx64_uk_UA.uri", 2, true
+		objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\AcroRdrDCx64_uk_UA.uri) -OutFile $env:TEMP\AcroRdrDCx64_uk_UA.exe", 2, true
 		objShell.Run ""& TEMP&"\AcroRdrDCx64_uk_UA.exe /sPb /rs /msi EULA_ACCEPT=YES", 2, true
-		objFSO.DeleteFile ""& TEMP&"\AcroRdrDCx64_uk_UA.txt"
+		objFSO.DeleteFile ""& TEMP&"\AcroRdrDCx64_uk_UA.uri"
 		objFSO.DeleteFile ""& TEMP&"\AcroRdrDCx64_uk_UA.exe"
 
 		' Google Chrome
-		objShell.Run "powershell Invoke-WebRequest -Uri https://install.vpm.net.ua/ChromeSetup.txt -OutFile $env:TEMP\ChromeSetup.txt", 2, true
-		objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\ChromeSetup.txt) -OutFile $env:TEMP\ChromeSetup.exe", 2, true
+		objShell.Run "powershell Invoke-WebRequest -Uri https://raw.githubusercontent.com/vpm/_install-scenario/main/ChromeSetup.uri -OutFile $env:TEMP\ChromeSetup.uri", 2, true
+		objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\ChromeSetup.uri) -OutFile $env:TEMP\ChromeSetup.exe", 2, true
 		objShell.Run ""& TEMP&"\ChromeSetup.exe /silent /install", 2, true
-		objFSO.DeleteFile ""& TEMP&"\ChromeSetup.txt"
+		objFSO.DeleteFile ""& TEMP&"\ChromeSetup.uri"
 		objFSO.DeleteFile ""& TEMP&"\ChromeSetup.exe"
 
 		' K-Lite Mega Codec Pack
-		objShell.Run "powershell Invoke-WebRequest -Uri https://install.vpm.net.ua/K-Lite_Codec_Pack_Mega.txt -OutFile $env:TEMP\K-Lite_Codec_Pack_Mega.txt", 2, true
-		objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\K-Lite_Codec_Pack_Mega.txt) -OutFile $env:TEMP\K-Lite_Codec_Pack_Mega.exe", 2, true
+		objShell.Run "powershell Invoke-WebRequest -Uri https://raw.githubusercontent.com/vpm/_install-scenario/main/K-Lite_Codec_Pack_Mega.uri -OutFile $env:TEMP\K-Lite_Codec_Pack_Mega.uri", 2, true
+		objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\K-Lite_Codec_Pack_Mega.uri) -OutFile $env:TEMP\K-Lite_Codec_Pack_Mega.exe", 2, true
 		objShell.Run ""& TEMP&"\K-Lite_Codec_Pack_Mega.exe /silent", 2, true
-		objFSO.DeleteFile ""& TEMP&"\K-Lite_Codec_Pack_Mega.txt"
+		objFSO.DeleteFile ""& TEMP&"\K-Lite_Codec_Pack_Mega.uri"
 		objFSO.DeleteFile ""& TEMP&"\K-Lite_Codec_Pack_Mega.exe"
 
 	End if
 
 	' 7-Zip
-	objShell.Run "powershell Invoke-WebRequest -Uri https://install.vpm.net.ua/7z2301-x64.txt -OutFile $env:TEMP\7z2301-x64.txt", 2, true
-	objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\7z2301-x64.txt) -OutFile $env:TEMP\7z2301-x64.exe", 2, true
+	objShell.Run "powershell Invoke-WebRequest -Uri https://raw.githubusercontent.com/vpm/_install-scenario/main/7z-x64.uri -OutFile $env:TEMP\7z2301-x64.uri", 2, true
+	objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\7z2301-x64.uri) -OutFile $env:TEMP\7z2301-x64.exe", 2, true
 	objShell.Run ""& TEMP&"\7z-x64.exe /S", 2, true
-	objFSO.DeleteFile ""& TEMP&"\7z-x64.txt"
+	objFSO.DeleteFile ""& TEMP&"\7z-x64.uri"
 	objFSO.DeleteFile ""& TEMP&"\7z-x64.exe"
 
 	' register .001 extention for 7-Zip 
@@ -457,5 +456,4 @@ If (((CurrentVersion = "6.3") Or (CurrentVersion = "6.4")) And (PROCESSOR_ARCHIT
 	objShell.RegWrite "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\7-Zip.zip\shell\open\command\","""C:\Program Files\7-Zip\7zFM.exe"" ""%1"" ","REG_SZ"
 
 End if
-
 

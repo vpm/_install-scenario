@@ -233,8 +233,8 @@ If (((CurrentVersion = "6.3") Or (CurrentVersion = "6.4")) And (PROCESSOR_ARCHIT
 	End if
 
 	' 7-Zip
-	objShell.Run "powershell Invoke-WebRequest -Uri https://raw.githubusercontent.com/vpm/_install-scenario/main/7z-x64.uri -OutFile $env:TEMP\7z2301-x64.uri", 2, true
-	objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\7z2301-x64.uri) -OutFile $env:TEMP\7z2301-x64.exe", 2, true
+	objShell.Run "powershell Invoke-WebRequest -Uri https://raw.githubusercontent.com/vpm/_install-scenario/main/7z-x64.uri -OutFile $env:TEMP\7z-x64.uri", 2, true
+	objShell.Run "powershell Invoke-WebRequest -Uri (Get-Content $env:TEMP\7z-x64.uri) -OutFile $env:TEMP\7z-x64.exe", 2, true
 	objShell.Run ""& TEMP&"\7z-x64.exe /S", 2, true
 	objFSO.DeleteFile ""& TEMP&"\7z-x64.uri"
 	objFSO.DeleteFile ""& TEMP&"\7z-x64.exe"

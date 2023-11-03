@@ -1,2 +1,12 @@
-# _install-scenario
-install software in windows
+# _install-scenario.vbs
+_install-scenario
+
+# officedeploymenttool.url
+
+#
+
+#
+
+#
+
+#

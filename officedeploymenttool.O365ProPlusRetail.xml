@@ -1,0 +1,16 @@
+<Configuration>
+  <Add OfficeClientEdition="64" Channel="Monthly">
+    <Product ID="O365ProPlusRetail">
+      <Language ID="uk-UA" />
+      <ExcludeApp ID="Groove" />
+      <ExcludeApp ID="Lync" />
+      <ExcludeApp ID="OneDrive" />
+   </Product>
+   <Product ID="ProofingTools">
+     <Language ID="en-US" />
+     <Language ID="uk-UA" />
+   </Product>
+ </Add>
+ <Display Level="None" AcceptEULA="TRUE" />
+ <Updates Enabled="TRUE"/>
+</Configuration>

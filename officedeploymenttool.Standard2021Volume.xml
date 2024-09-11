@@ -5,6 +5,7 @@
       <ExcludeApp ID="Groove" />
       <ExcludeApp ID="OneNote" />
       <ExcludeApp ID="OneDrive" />
+      <ExcludeApp ID="Publisher" />
       <ExcludeApp ID="Teams" />
    </Product>
    <Product ID="ProofingTools">

@@ -4,6 +4,7 @@
       <Language ID="uk-UA" />
       <ExcludeApp ID="Groove" />
       <ExcludeApp ID="OneNote" />
+      <ExcludeApp ID="Publisher" />
    </Product>
    <Product ID="ProofingTools">
      <Language ID="uk-UA" />

@@ -8,8 +8,8 @@
       <ExcludeApp ID="Teams" />
    </Product>
    <Product ID="ProofingTools">
-     <Language ID="uk-UA" />
      <Language ID="en-US" />
+     <Language ID="uk-UA" />
    </Product>
  </Add>
  <Display Level="None" AcceptEULA="TRUE" />

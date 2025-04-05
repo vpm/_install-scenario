@@ -13,6 +13,7 @@
    </Product>
  </Add>
  <Display Level="None" AcceptEULA="TRUE" />
+ <Property Name="FORCEAPPSHUTDOWN" Value="TRUE" />
  <Property Name="AUTOACTIVATE" Value="1"/>
  <Updates Enabled="TRUE"/>
 </Configuration>
